@@ -1,0 +1,295 @@
+*-<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌴 The Spice Safari 🌴</title>
+    <style>
+        :root {
+            --soft-sage: #f7f389;
+            --deep-jungle: #1A3A2A;
+            --emerald: #2D6A4F;
+            --matcha: #52B788;
+            --pastel-pink: #FFCAD4;
+            --gold: #D4AF37;
+            --dark-text: #0B251A;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--soft-sage);
+            background-image: radial-gradient(var(--matcha) 0.5px, transparent 0.5px), radial-gradient(var(--matcha) 0.5px, var(--soft-sage) 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--deep-jungle);
+            background-image: linear-gradient(135deg, var(--deep-jungle), #081C15);
+            color: var(--pastel-pink);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-family: 'Georgia', serif;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px var(--gold);
+        }
+
+        nav {
+            background-color: rgba(26, 58, 42, 0.95);
+            text-align: center;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        nav a.active {
+            color: var(--pastel-pink);
+            border-bottom: 2px solid var(--pastel-pink);
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: var(--pastel-pink);
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .story-section, .menu-section {
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(45, 106, 79, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .story-section h2, .menu-section h2 {
+            color: var(--deep-jungle);
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .story-section p {
+            font-size: 1.1rem;
+            color: #2F4F4F;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .menu-category {
+            color: var(--emerald);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--pastel-pink);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 1.5rem 0;
+        }
+
+        .item-details h3 {
+            margin: 0;
+            color: var(--deep-jungle);
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .item-details p {
+            margin: 6px 0 0 0;
+            font-size: 0.95rem;
+            color: #556B2F;
+            font-style: italic;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: var(--emerald);
+            font-size: 1.15rem;
+            white-space: nowrap;
+            padding-left: 2rem;
+            font-family: 'Georgia', serif;
+        }
+
+        footer {
+            background-color: var(--deep-jungle);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>🌿 The Spice Safari 🌿</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a onclick="openTab('story')" id="story-tab" class="active">Our Story</a>
+        <a onclick="openTab('menu')" id="menu-tab">The Menu</a>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        
+        <!-- Our Story Section -->
+        <section id="story" class="tab-content story-section active">
+            <h2>Our Story</h2>
+            <p>Welcome to <strong>The Spice Safari</strong></p>
+            <p>The main reason why we wanted to open "The Spice Safari" is because there are really few Malagasy restaurants in Pakistan and we wanted to introduce people to the taste of Madagascar, so more people eat Malagasy Cuisine.</p>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="tab-content menu-section">
+            <h2>⚜️ Madagascar Meets Pakistan ⚜️</h2>
+            <p style="text-align: center; color: #2F4F4F;">Choose from the variety of our Cuisine</p>
+
+            <h3 class="menu-category">Starters / Appetizers</h3>
+            
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3>Sambusa-Samosa Fusion</h3>
+                    <p>Samosas stuffed with spiced Malagasy beef, Pakistani green chilies, and fresh herbs.</p>
+                </div>
+                <div class="item-price">Rs. 650</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3>Vanilla Gola Ganda</h3>
+                    <p>Shaved ice drizzled with Madagascar vanilla bean syrup and condensed milk.</p>
+                </div>
+                <div class="item-price">Rs. 600</div>
+            </div>
+
+            <h3 class="menu-category">Main Courses</h3>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3>Vary Amin'anana Biryani</h3>
+                    <p>Basmati rice layered with Madagascar leafy greens and slow-cooked tender mutton.</p>
+                </div>
+                <div class="item-price">Rs. 990</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3>Ravitoto Karahi</h3>
+                    <p>Chicken breast simmered in an authentic wok with imported crushed cassava leaves and rich, cold-pressed island coconut milk.</p>
+                </div>
+                <div class="item-price">Rs. 950</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3>Malagasy Seekh Kebabs</h3>
+                    <p>Minced beef skewers infused with house-ground Pakistani spices.</p>
+                </div>
+                <div class="item-price">Rs. 890</div>
+            </div>
+
+            <h3 class="menu-category">Dessert</h3>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3>Coconut Naan</h3>
+                    <p>Naan stuffed with sweet coconut flakes and brushed with butter.</p>
+                </div>
+                <div class="item-price">Rs. 620</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-details">
+                    <h3>Kulfi-Koba</h3>
+                    <p>Kulfi is a creamy Pakistani ice cream made from slow-cooked milk, almonds, and pistachios. Koba is a famous Madagascar sweet cake made of ground rice, brown sugar, and peanuts, wrapped in banana leaves and boiled.</p>
+                </div>
+                <div class="item-price">Rs. 620</div>
+            </div>
+        </section>
+
+    </div>
+
+  
+    <script>
+        // Tab Switching Logic
+        function openTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById(tabId + '-tab').classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
+
